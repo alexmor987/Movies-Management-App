@@ -1,0 +1,64 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Search Page</h1>
+    <form action="/movie/searchMovies" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name">
+        <br>
+        <label for="language">Language:</label>
+        <select class="form-select" aria-label="Default select example" name="language">
+            <option selected value="">Open this select menu</option>
+            <option value="English">English</option>
+            <option value="French">French</option>
+            <option value="Russian">Russian</option>
+            <option value="Hebrew">Hebrew</option>
+          </select>
+          <br>
+        <label for="genre"> Select a gener:</label>
+        <select class="form-select" aria-label="Default select example" id="genres"  name="genres" required>
+            <option selected value="">Open this select menu</option>
+            <% generslist.forEach(x=>{ %>
+            <option value="<%=x%>" name="genres"><%= x %></option>
+           <% }) %>
+          </select>
+          <br>
+          <button type="submit" id="chksubmit">Search</button>  
+    </form>
+    <br>
+    <a href="/movie">Back to Menu</a>
+    <!--
+
+  <script>$(function() {
+
+        $('#genres').multiselect({
+        
+        includeSelectAllOption: true
+        
+        });
+        
+        $('#chksubmit').click(function() {
+        
+        alert($('#genres').val());
+        
+        })
+        
+        });</script>
+
+    -->
+
+  
+</body>
+</html>
+

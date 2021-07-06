@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='/stylesheets/menustyle.css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">            
+    <title>Menu</title>
+</head>
+<body>
+    <center>
+    <div class="vertical-menu">
+        <a class="active">Menu</a>
+        <a href="/movie/createNewMovie">Create new movie</a>
+        <a href="/movie/searchMovies">Search movies</a>
+        <%if(isAdmin){%>
+            <a href="/users">Edit Users</a>
+        <%}%>
+        <% if(msg != '') { %>
+          <div class="menumsg"><p><b><%= msg %></b></p></div>    
+    <% } %>
+    </center>
+     </div>
+  
+  
+ 
+</body>
+</html>

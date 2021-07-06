@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/movie/createNewMovie"  method="POST">
+        <h1>New Movie</h1>
+          <label for="name"><strong>Movie Name</strong></label>
+          <input type="text" placeholder="Enter movie name" name="name" required><br>
+          <label for="language">Choose a language:</label>
+            <select name="language" id="language" required>
+                <option value="English">English</option>
+                <option value="French">French</option>
+                <option value="Russian">Russian</option>
+                <option value="Hebrew">Hebrew</option>
+            </select>
+             <br><br>
+            <fieldset>      
+                <legend>Genres?</legend>      
+                <input type="checkbox" name="genres" value="Drama" id="drama">Drama<br>      
+                <input type="checkbox" name="genres" value="Crime" id="crime" >Crime<br>      
+                <input type="checkbox" name="genres" value="Thriller" id="thriller">Thriller<br>      
+                <br>            
+            </fieldset>      
+        <br>
+        <button type="submit" id="submitBtn">Create</button>
+      </form>
+      <script>   
+     $(document).ready(function(){
+    $("form").submit(function(){
+ if ($('input:checkbox').filter(':checked').length < 1){
+        alert("Please Check at least one Check Box");
+ return false;
+ }
+    });
+});
+    </script>
+        
+</body>
+</html>

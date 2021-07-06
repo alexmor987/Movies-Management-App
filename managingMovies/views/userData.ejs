@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>userData</title>
+</head>
+<body>
+    <h1>User Data Page</h1>
+  
+    <%if(typeof userData=='object'){%>
+    <form action="/users/updateUser" method="POST">
+                <input type="text" name="id" id="id" hidden >
+                <input type="text" name="NumOfTransactions" id="NumOfTransactions" hidden>
+                <input type="text" name="CreatedDate" id="CreatedDate" hidden>
+                <input type="text" name="isAdmin" id="isAdmin" hidden>
+                Username: <input type="text" name="Username" id="username"><br>
+                Password: <input type="text" name="Password" id="password"><br><br>
+                <button type="submit">Update</button>
+            </form> 
+            <script>
+                var username = document.getElementById('username');
+                username.value='<%= userData.Username%>';
+                var password = document.getElementById('password');
+                password.value='<%=userData.Password%>';
+
+                var id = document.getElementById('id');
+                id.value='<%=userData.id%>';
+                var NumOfTransactions = document.getElementById('NumOfTransactions');
+                NumOfTransactions.value='<%=userData.NumOfTransactions%>';
+                var CreatedDate = document.getElementById('CreatedDate');
+                CreatedDate.value='<%=userData.CreatedDate%>';
+                var CreatedDate = document.getElementById('isAdmin');
+                isAdmin.value='<%=userData.isAdmin%>';
+            </script>
+    <%}%>
+    <%if (userData==''){%>
+        <form action="/users/createUser" method="POST">
+            Username: <input type="text" name="Username" ><br>
+            Password: <input type="text" name="Password" ><br><br>
+            <button type="submit">Save</button>
+        </form> 
+    <%}%>
+      
+</body>
+</html>
