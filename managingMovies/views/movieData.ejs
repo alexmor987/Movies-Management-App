@@ -10,34 +10,27 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <title>Movie Data</title>
 </head>
-<body>
-    <center><h1>Movie Data Page</h1></center>
-    <div class="card" style="width: 18rem;">
+<body class="d-flex flex-column min-vh-100">
+  <div class="container-fluid d-flex flex-column flex-fill align-items-center justify-content-center">
+      <center><h1>Movie Data Page</h1></center>
+      <div class="card" style="width: 18rem;">
         <% if(data.hasOwnProperty('image')) { %>
-            <img class="card-img-top"  src="<%= data.image.original%>" alt="Card image cap">
-            <% } %>
+          <img class="card-img-top"  src="<%= data.image.original%>" alt="Card image cap">
+        <% } %>
         <div class="card-body">
           <h5 class="card-title"><%= data.name%></h5>
-          <p class="card-text"><%= data.summary%></p>
-          <a href="/movie/searchMovies" class="btn btn-primary">To Search Results</a>
-          <a href="/movie"" class="btn btn-primary">To Menu</a>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"> ID : <%= data.id%></li>
+          <li class="list-group-item">Language:<%= data.language%></li>
+          <li class="list-group-item">Genres : <%= data.genres%></li>
+        </ul>
+        <div class="card-body">
+          <a href="/movie/searchMovies" class="btn btn-primary">TO SEARCH RESULTS</a>
+          <a href="/movie" class="btn btn-primary">TO MENU</a>
         </div>
       </div>
-
-<!--
-  ID : <%= data.id%><br/>
-    Name : <br/>
-    Genres : <%= data.genres%><br/>
-    Language : <%= data.language%><br/>
-    <% if(data.hasOwnProperty('image')) { %>
-        <img src=<%= data.image.original%> alt="Workplace" width="400" height="379">
-        <% } %>
-    <br><br>
-        <a href="/movie/searchMovies">Back to Search Results</a><br><br>
-        <a href="/movie">Back to MENU</a>
-
--->
+    </div>
     
-  
 </body>
 </html>

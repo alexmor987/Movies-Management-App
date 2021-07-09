@@ -1,6 +1,5 @@
-const movieJsonDAL=require('../dals/moviesJsonDAL')
-
-const moviesRestDAL=require('../dals/moviesRestDAL')
+const movieJsonDAL=require('../dals/moviesJsonDAL');
+const moviesRestDAL=require('../dals/moviesRestDAL');
 
 exports.createMovie=async (obj)=>
 {
@@ -24,7 +23,6 @@ exports.createMovie=async (obj)=>
          }
 
 }
-
 exports.searchMovies=async(obj)=>
 {
   let allMovies=await mergeTwoDataSources();
@@ -33,7 +31,6 @@ exports.searchMovies=async(obj)=>
      (x.language===obj.language || obj.language==="")&&
      (isSameGenres(x.genres,obj.genres) || obj.genres==="");
   })
-  //console.log(result);
   return result;
 }
 exports.searchMovieById=async(id)=>
@@ -50,19 +47,33 @@ exports.moviesNamesWithSameGenre=async(genre)=>
   })
   return result;
 }
-
 exports.getGenersList=async ()=>{
   let allMovies=await mergeTwoDataSources();
   let result= allMovies.map(x=>x.genres)
   var mySet = new Set();
   result.forEach(element => {
+    if(Array.isArray(element))
+    {
       element.forEach(x => {
          mySet.add(x);
-    });
+          });
+    }
+    else
+    { 
+      mySet.add(element);
+    }
   });
  return mySet;
 }
-
+exports.getLanguagesList=async ()=>{
+  let allMovies=await mergeTwoDataSources();
+  let result= allMovies.map(x=>x.language)
+  var mySet = new Set();
+  result.forEach(x => {
+    mySet.add(x);
+});
+ return mySet;
+}
 function writeToFile(allMovies,lastId,obj){
 
   let object={
@@ -74,7 +85,6 @@ function writeToFile(allMovies,lastId,obj){
           allMovies.movies.push(object);
           movieJsonDAL.createMovie(allMovies)
 }
-
 function checkLastId(allMovies)
 {
   let ids=allMovies.map(x=>x.id);
@@ -85,7 +95,6 @@ function isSameNames (x,y){
   
     return x.toLowerCase().includes(y.toLowerCase());  
 }
-  
 function isSameGenres (x,y){
   if(typeof x === 'string')
     return x===y;
@@ -99,4 +108,3 @@ async function mergeTwoDataSources(){
   return allMovies;
 }
 
-//this.searchMovies({name:"dome",language:"",genres:""});

@@ -12,7 +12,7 @@ exports.readUsers=async ()=>
          console.error(error);
         }
 }
-exports.isUserExist=async(username,pwd)=>
+exports.getUserLoginData=async(username,pwd)=>
 {
    try{
        let allusers= await usersJsonDAL.readUsers();

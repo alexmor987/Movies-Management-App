@@ -12,22 +12,22 @@
 </head>
 <body>
    <center><h1>Users Management</h1></center> 
-    <a href="/users/createUser">Add New</a><br>
+    <a href="/users/createUser" class="btn btn-primary">ADD NEW USER</a><br>
     <table class="table table-bordered">
         <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">userName</th>
-          <th scope="col">Delete / Update</th>
+          <th scope="col">USERNAME</th>
+          <th scope="col">DELETE / UPDATE</th>
         </tr>
          </thead>
         <% usersData.forEach(function(el,index) { %>
             <tbody>
             <tr>
-                <th scope="row"><%=index%></th>
+                <th scope="row"><%=index+1%></th>
                 <td><%= el.Username %></td>
-                <td><a href="/users/deleteUser/<%= el.id %>">Delete</a><br>
-                    <a href="/users/updateUser/<%= el.id %>">Update</a>
+                <td><a href="/users/deleteUser/<%= el.id %>">DELETE</a><br>
+                    <a href="/users/updateUser/<%= el.id %>">UPDATE</a>
                 </td>
             </tr>
            </tbody>

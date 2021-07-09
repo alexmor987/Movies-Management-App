@@ -20,14 +20,13 @@
         <label for="language">Language:</label>
         <select class="form-select" aria-label="Default select example" name="language">
             <option selected value="">Open this select menu</option>
-            <option value="English">English</option>
-            <option value="French">French</option>
-            <option value="Russian">Russian</option>
-            <option value="Hebrew">Hebrew</option>
+            <% languagesList.forEach(x=>{ %>
+            <option value="<%=x%>" name="language"><%= x %></option>
+           <% }) %>
           </select>
           <br>
         <label for="genre"> Select a gener:</label>
-        <select class="form-select" aria-label="Default select example" id="genres"  name="genres" required>
+        <select class="form-select" aria-label="Default select example" name="genres">
             <option selected value="">Open this select menu</option>
             <% generslist.forEach(x=>{ %>
             <option value="<%=x%>" name="genres"><%= x %></option>
@@ -37,27 +36,7 @@
           <button type="submit" id="chksubmit">Search</button>  
     </form>
     <br>
-    <a href="/movie">Back to Menu</a>
-    <!--
-
-  <script>$(function() {
-
-        $('#genres').multiselect({
-        
-        includeSelectAllOption: true
-        
-        });
-        
-        $('#chksubmit').click(function() {
-        
-        alert($('#genres').val());
-        
-        })
-        
-        });</script>
-
-    -->
-
+    <a href="/movie" class="btn btn-primary">BACK TO MENU</a>
   
 </body>
 </html>

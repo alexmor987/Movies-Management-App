@@ -16,14 +16,14 @@
         <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">A name of a movie</th>
+          <th scope="col">A NAME OF A MOVIE</th>
           <th scope="col">SAME GENRE </th>
         </tr>
          </thead>
         <% result.forEach(function(el,index) { %>
             <tbody>
             <tr>
-                <th scope="row"><%=index%></th>
+                <th scope="row"><%=index+1%></th>
                 <td><a href="/movie/searchMovie/<%= el.id %>"><%= el.name %></a></td>
                 <td>  
                 <% moviesNamesWithSameGenre.slice(0,10).forEach(function(x) { %>
@@ -35,6 +35,6 @@
             <% }) %>
       </table>
       <br><br>
-      <a href="/movie">Back to Menu</a>
+      <a href="/movie" class="btn btn-primary">BACK TO MENU</a>
 </body>
 </html>
