@@ -20,16 +20,18 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET create New Movie Page. */
-router.get('/createNewMovie', function(req, res, next) {
+router.get('/createNewMovie',async function(req, res, next) {
   if(req.session.isAuthenticated) {
     if(req.session.isAdmin){
-      res.render('createNewMovie',{isAdmin:req.session.isAdmin,msg:''});
+      let geners=await moviesBL.getGenersList();
+      res.render('createNewMovie',{isAdmin:req.session.isAdmin,generslist:geners,msg:''});
     }
     else if(req.session.numOfTransactions===0){
       res.render('login',{msg:'Your "credits" have expired for the current day!'}); 
       }
     else{
-         res.render('createNewMovie',{isAdmin:req.session.isAdmin,msg:''});
+        let geners=await moviesBL.getGenersList();
+         res.render('createNewMovie',{isAdmin:req.session.isAdmin,generslist:geners,msg:''});
       }
   }
   else

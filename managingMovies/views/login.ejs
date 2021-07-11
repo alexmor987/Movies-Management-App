@@ -1,6 +1,11 @@
 <!DOCTYPE html> 
 <html> 
 <head>
+    <link rel='stylesheet' href='/stylesheets/loginstyle.css' />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
 <link rel='stylesheet' href='/stylesheets/loginstyle.css' />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> Login Page </title>
@@ -9,22 +14,21 @@
 </style> 
 </head>  
 <body>  
-    <center> <h1> Login Form </h1> </center> 
-    <form action="/login" method="POST" >
-        <div class="container"> 
-       
-            <label>Username : </label> 
-            <input type="text" placeholder="Enter Username" name="username" required><br>
-            <label>Password : </label> 
-            <input type="password" placeholder="Enter Password" name="password" required><br>
-            <button type="submit">Login</button>  
-            
-        </div> 
-    </form>   
-    
-    <% if(msg != '') { %>
-        <div class="msg"><p><b><%= msg %></b></p></div>
-      
-  <% } %>
+    <div class="container">
+                <div class="wrap">
+                    <p class="form-title">
+                        Sign In</p>
+                    <form action="/login"  class="login" method="POST" >
+                    <input type="text" placeholder="Username" name="username"/>
+                    <input type="password" placeholder="Password" name="password" />
+                    <input type="submit" value="Sign In" class="btn btn-success btn-sm" />
+                    </form>
+                    <% if(msg != '') { %>
+                        <center><div class="msg"><p><b><%= msg %></b></p></div></center>
+                      
+                  <% } %>
+                </div>
+            </div>
+    </div>
 </body>   
 </html>
